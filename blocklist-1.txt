@@ -1,9 +1,0 @@
-0.0.0.0 (\.|^)tiktok\.com$
-0.0.0.0 (\.|^)tiktokcdn\.com$
-0.0.0.0 (\.|^)atomile\.com$
-0.0.0.0 (\.|^)wsdvs\.com$
-0.0.0.0 (\.|^)worldfcdn\.com$
-0.0.0.0 (\.|^)adswizz\.com$
-0.0.0.0 (\.|^)akamaized\.net$
-0.0.0.0 (\.|^)tiktokv\.com$
-0.0.0.0 (\.|^)musical\.ly$
