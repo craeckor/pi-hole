@@ -11,3 +11,13 @@
 0.0.0.0 api2.musical.ly
 0.0.0.0 log2.musical.ly
 0.0.0.0 api2-21-h2.musical.ly
+0.0.0.0 log16-normal-c-useast1a.tiktokv.com
+0.0.0.0 tiktok.com
+0.0.0.0 tiktokcdn.com
+0.0.0.0 s20.tiktokcdn.com
+0.0.0.0 p16-sign-va.tiktokcdn.com
+0.0.0.0 sf16-ies-music-sg.tiktokcdn.com
+0.0.0.0 sf16-ies-music.tiktokcdn.com
+0.0.0.0 p16-amd-va.tiktokcdn.com
+0.0.0.0 v77.tiktokcdn.com
+0.0.0.0 p77-sign-sg.tiktokcdn.com
