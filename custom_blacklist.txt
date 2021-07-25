@@ -1,0 +1,13 @@
+#Custom Blacklist for Pi-Hole
+#Made by Linus
+
+0.0.0.0 bjakku.com
+0.0.0.0 vidapi.aaroaj.com
+0.0.0.0 call.inforsea.com
+0.0.0.0 s240.mxcdn.net
+0.0.0.0 aaroaj.com
+0.0.0.0 inforsea.com
+0.0.0.0 mxcdn.net
+0.0.0.0 b184.s240.meetrics.net
+0.0.0.0 meetrics.net
+0.0.0.0 s240.meetrics.net
