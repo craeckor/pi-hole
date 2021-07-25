@@ -12,3 +12,7 @@
 0.0.0.0 meetrics.net
 0.0.0.0 s240.meetrics.net
 0.0.0.0 cdn.prod.www.spiegel.de
+0.0.0.0 traffic.emsservice.de
+0.0.0.0 emsservice.de
+0.0.0.0 bls.adalliance.io
+0.0.0.0 adalliance.io
