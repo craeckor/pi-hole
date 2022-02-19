@@ -26,10 +26,8 @@
 0.0.0.0 plus.l.google.com
 0.0.0.0 venetrigni.com
 0.0.0.0 cagothie.net
-0.0.0.0 s248dk.dood.video
 0.0.0.0 dozubatan.com
 0.0.0.0 toglooman.com
-0.0.0.0 dood.video
 0.0.0.0 dozubatan.com
 0.0.0.0 makespram.com
 0.0.0.0 tipcatscarola.com
