@@ -33,16 +33,16 @@ The Pi-hole® is a [DNS sinkhole](https://en.wikipedia.org/wiki/DNS_Sinkhole) th
 
 Those who want to get started quickly and conveniently may install Pi-hole using the following command:
 
-### `curl -sSL https://install.pi-hole.net | bash`
+### `curl -sSL https://raw.githubusercontent.com/craeckor/pi-hole/master/automated%20install/basic-install.sh | bash`
 
 ## Alternative Install Methods
 
-Piping to `bash` is [controversial](https://pi-hole.net/2016/07/25/curling-and-piping-to-bash), as it prevents you from [reading code that is about to run](https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh) on your system. Therefore, we provide these alternative installation methods which allow code review before installation:
+Piping to `bash` is [controversial](https://pi-hole.net/2016/07/25/curling-and-piping-to-bash), as it prevents you from [reading code that is about to run](https://github.com/craeckor/pi-hole/blob/master/automated%20install/basic-install.sh) on your system. Therefore, we provide these alternative installation methods which allow code review before installation:
 
 ### Method 1: Clone our repository and run
 
 ```bash
-git clone --depth 1 https://github.com/pi-hole/pi-hole.git Pi-hole
+git clone --depth 1 https://github.com/craeckor/pi-hole.git Pi-hole
 cd "Pi-hole/automated install/"
 sudo bash basic-install.sh
 ```
@@ -50,7 +50,7 @@ sudo bash basic-install.sh
 ### Method 2: Manually download the installer and run
 
 ```bash
-wget -O basic-install.sh https://install.pi-hole.net
+wget -O basic-install.sh https://raw.githubusercontent.com/craeckor/pi-hole/master/automated%20install/basic-install.sh
 sudo bash basic-install.sh
 ```
 
@@ -96,7 +96,7 @@ We welcome _everyone_ to contribute to issue reports, suggest new features, and 
 
 If you have something to add - anything from a typo through to a whole new feature, we're happy to check it out! Just make sure to fill out our template when submitting your request; the questions it asks will help the volunteers quickly understand what you're aiming to achieve.
 
-You'll find that the [install script](https://github.com/pi-hole/pi-hole/blob/master/automated%20install/basic-install.sh) and the [debug script](https://github.com/pi-hole/pi-hole/blob/master/advanced/Scripts/piholeDebug.sh) have an abundance of comments, which will help you better understand how Pi-hole works. They're also a valuable resource to those who want to learn how to write scripts or code a program! We encourage anyone who likes to tinker to read through it and submit a pull request for us to review.
+You'll find that the [install script](https://github.com/craeckor/pi-hole/blob/master/automated%20install/basic-install.sh) and the [debug script](https://github.com/craeckor/pi-hole/blob/master/advanced/Scripts/piholeDebug.sh) have an abundance of comments, which will help you better understand how Pi-hole works. They're also a valuable resource to those who want to learn how to write scripts or code a program! We encourage anyone who likes to tinker to read through it and submit a pull request for us to review.
 
 -----
 
@@ -115,9 +115,9 @@ While we are primarily reachable on our [Discourse User Forum](https://discourse
 
 ## Breakdown of Features
 
-### [Faster-than-light Engine](https://github.com/pi-hole/ftl)
+### [Faster-than-light Engine](https://github.com/craeckor/FTL)
 
-[FTLDNS](https://github.com/pi-hole/ftl) is a lightweight, purpose-built daemon used to provide statistics needed for the Web Interface, and its API can be easily integrated into your own projects. As the name implies, FTLDNS does this all _very quickly_!
+[FTLDNS](https://github.com/craeckor/FTL) is a lightweight, purpose-built daemon used to provide statistics needed for the Web Interface, and its API can be easily integrated into your own projects. As the name implies, FTLDNS does this all _very quickly_!
 
 Some of the statistics you can integrate include:
 
@@ -130,7 +130,7 @@ Some of the statistics you can integrate include:
 - Queries cached
 - Unique clients
 
-Access the API via [`telnet`](https://github.com/pi-hole/FTL), the Web (`admin/api.php`) and Command Line (`pihole -c -j`). You can find out [more details over here](https://discourse.pi-hole.net/t/pi-hole-api/1863).
+Access the API via [`telnet`](https://github.com/craeckor/FTL), the Web (`admin/api.php`) and Command Line (`pihole -c -j`). You can find out [more details over here](https://discourse.pi-hole.net/t/pi-hole-api/1863).
 
 ### The Command-Line Interface
 
@@ -150,7 +150,7 @@ You can read our [Core Feature Breakdown](https://docs.pi-hole.net/core/pihole-c
 
 ### The Web Interface Dashboard
 
-This [optional dashboard](https://github.com/pi-hole/web) allows you to view stats, change settings, and configure your Pi-hole. It's the power of the Command Line Interface, with none of the learning curve!
+This [optional dashboard](https://github.com/craeckor/web) allows you to view stats, change settings, and configure your Pi-hole. It's the power of the Command Line Interface, with none of the learning curve!
 
 Some notable features include:
 

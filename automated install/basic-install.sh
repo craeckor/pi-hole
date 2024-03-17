@@ -14,7 +14,7 @@
 #
 # Install with this command (from your Linux machine):
 #
-# curl -sSL https://install.pi-hole.net | bash
+# curl -sSL https://raw.githubusercontent.com/craeckor/pi-hole/master/automated%20install/basic-install.sh | bash
 
 # -e option instructs bash to immediately exit if any command [1] has a non-zero exit status
 # We do not want users to end up with a partially working install, so we exit the script
@@ -22,7 +22,7 @@
 set -e
 
 # Append common folders to the PATH to ensure that all basic commands are available.
-# When using "su" an incomplete PATH could be passed: https://github.com/pi-hole/pi-hole/issues/3209
+# When using "su" an incomplete PATH could be passed: https://github.com/craeckor/pi-hole/issues/3209
 export PATH+=':/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
 ######## VARIABLES #########
@@ -72,9 +72,9 @@ webroot="/var/www/html"
 # Pi-hole contains various setup scripts and files which are critical to the installation.
 # Search for "PI_HOLE_LOCAL_REPO" in this file to see all such scripts.
 # Two notable scripts are gravity.sh (used to generate the HOSTS file) and advanced/Scripts/webpage.sh (used to install the Web admin interface)
-webInterfaceGitUrl="https://github.com/pi-hole/web.git"
+webInterfaceGitUrl="https://github.com/craeckor/web.git"
 webInterfaceDir="${webroot}/admin"
-piholeGitUrl="https://github.com/pi-hole/pi-hole.git"
+piholeGitUrl="https://github.com/craeckor/pi-hole.git"
 PI_HOLE_LOCAL_REPO="/etc/.pihole"
 # List of pihole scripts, stored in an array
 PI_HOLE_FILES=(chronometer list piholeDebug piholeLogFlush setupLCD update version gravity uninstall webpage)
@@ -247,7 +247,7 @@ os_check() {
             printf "      If you wish to attempt to continue anyway, you can try one of the following commands to skip this check:\\n"
             printf "\\n"
             printf "      e.g: If you are seeing this message on a fresh install, you can run:\\n"
-            printf "             %bcurl -sSL https://install.pi-hole.net | sudo PIHOLE_SKIP_OS_CHECK=true bash%b\\n" "${COL_LIGHT_GREEN}" "${COL_NC}"
+            printf "             %bcurl -sSL https://raw.githubusercontent.com/craeckor/pi-hole/master/automated%20install/basic-install.sh | sudo PIHOLE_SKIP_OS_CHECK=true bash%b\\n" "${COL_LIGHT_GREEN}" "${COL_NC}"
             printf "\\n"
             printf "           If you are seeing this message after having run pihole -up:\\n"
             printf "             %bsudo PIHOLE_SKIP_OS_CHECK=true pihole -r%b\\n" "${COL_LIGHT_GREEN}" "${COL_NC}"
@@ -655,7 +655,7 @@ chooseInterface() {
 
 # This lets us prefer ULA addresses over GUA
 # This caused problems for some users when their ISP changed their IPv6 addresses
-# See https://github.com/pi-hole/pi-hole/issues/1473#issuecomment-301745953
+# See https://github.com/craeckor/pi-hole/issues/1473#issuecomment-301745953
 testIPv6() {
     # first will contain fda2 (ULA)
     printf -v first "%s" "${1%%:*}"
@@ -2228,7 +2228,7 @@ FTLinstall() {
 
     # Determine which version of FTL to download
     if [[ "${ftlBranch}" == "master" ]];then
-        url="https://github.com/pi-hole/ftl/releases/latest/download"
+        url="https://github.com/craeckor/FTL/releases/latest/download"
     else
         url="https://ftl.pi-hole.net/${ftlBranch}"
     fi
@@ -2356,7 +2356,7 @@ get_binary_name() {
         # Special case: This is a 32 bit OS, installed on a 64 bit machine
         # -> change machine processor to download the 32 bit executable
         # We only check this for Debian-based systems as this has been an issue
-        # in the past (see https://github.com/pi-hole/pi-hole/pull/2004)
+        # in the past (see https://github.com/craeckor/pi-hole/pull/2004)
         if [[ "${dpkgarch}" == "i386" ]]; then
             printf "%b  %b Detected 32bit (i686) processor\\n" "${OVER}" "${TICK}"
             l_binary="pihole-FTL-linux-x86_32"
@@ -2447,7 +2447,7 @@ FTLcheckUpdate() {
             FTLversion=$(/usr/bin/pihole-FTL tag)
             local FTLlatesttag
 
-            if ! FTLlatesttag=$(curl -sI https://github.com/pi-hole/FTL/releases/latest | grep --color=never -i Location: | awk -F / '{print $NF}' | tr -d '[:cntrl:]'); then
+            if ! FTLlatesttag=$(curl -sI https://github.com/craeckor/FTL/releases/latest | grep --color=never -i Location: | awk -F / '{print $NF}' | tr -d '[:cntrl:]'); then
                 # There was an issue while retrieving the latest version
                 printf "  %b Failed to retrieve latest FTL release metadata" "${CROSS}"
                 return 3
@@ -2458,7 +2458,7 @@ FTLcheckUpdate() {
             else
                 printf "  %b Latest FTL Binary already installed (%s). Confirming Checksum...\\n" "${INFO}" "${FTLlatesttag}"
 
-                remoteSha1=$(curl -sSL --fail "https://github.com/pi-hole/FTL/releases/download/${FTLversion%$'\r'}/${binary}.sha1" | cut -d ' ' -f 1)
+                remoteSha1=$(curl -sSL --fail "https://github.com/craeckor/FTL/releases/download/${FTLversion%$'\r'}/${binary}.sha1" | cut -d ' ' -f 1)
                 localSha1=$(sha1sum "$(command -v pihole-FTL)" | cut -d ' ' -f 1)
 
                 if [[ "${remoteSha1}" != "${localSha1}" ]]; then
@@ -2771,6 +2771,9 @@ main() {
     else
         INSTALL_TYPE="Update"
     fi
+
+    rm /var/www/html/index.lighttpd.html
+    curl https://raw.githubusercontent.com/craeckor/web/lighttpd/html/index.html -o /var/www/html/index.html -s -L
 
     # Display where the log file is
     printf "\\n  %b The install log is located at: %s\\n" "${INFO}" "${installLogLoc}"
