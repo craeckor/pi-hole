@@ -2772,8 +2772,18 @@ main() {
         INSTALL_TYPE="Update"
     fi
 
-    rm /var/www/html/index.lighttpd.html
-    curl https://raw.githubusercontent.com/craeckor/web/lighttpd/html/index.html -o /var/www/html/index.html -s -L
+    indexmd5hash="1E29E2866DD0BF66570A558DE767501D"
+
+    rm -f /var/www/html/index.lighttpd.html
+    if [ -e "/var/www/html/index.html" ]; then
+        indexmd5=$(md5sum "/var/www/html/index.html")
+        if [ "$indexmd5" != "$indexmd5hash" ]; then
+            rm -f /var/www/html/index.html
+            curl https://raw.githubusercontent.com/craeckor/web/lighttpd/html/index.html -o /var/www/html/index.html -s -L
+        fi
+    else
+        curl https://raw.githubusercontent.com/craeckor/web/lighttpd/html/index.html -o /var/www/html/index.html -s -L
+    fi
 
     # Display where the log file is
     printf "\\n  %b The install log is located at: %s\\n" "${INFO}" "${installLogLoc}"
